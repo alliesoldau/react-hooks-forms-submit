@@ -17,15 +17,20 @@ function Form(props) {
   function handleSubmit(event) {
     event.preventDefault();
     if (firstName.length > 0) {
-      const formData = {
+      if (lastName.length > 0) {
+        let formData = {
         firstName: firstName,
         lastName: lastName,
-      };
-      const dataArray = [...submittedData, formData];
-      setSubmittedData(dataArray);
-      setFirstName("");
-      setLastName("");
-      setErrors([]);
+      }
+        const dataArray = [...submittedData, formData];
+        setSubmittedData(dataArray);
+        setFirstName("");
+        setLastName("");
+        setErrors([]);
+        
+      } else {
+        setErrors(["Last name is required!"]);
+      }
   } else {
       setErrors(["First name is required!"]);
     }
